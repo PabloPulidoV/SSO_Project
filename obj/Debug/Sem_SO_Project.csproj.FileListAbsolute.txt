@@ -1,0 +1,9 @@
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\bin\Debug\Sem_SO_Project.exe.config
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\bin\Debug\Sem_SO_Project.exe
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\bin\Debug\Sem_SO_Project.pdb
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\obj\Debug\Sem_SO_Project.csprojResolveAssemblyReference.cache
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\obj\Debug\Sem_SO_Project.Form1.resources
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\obj\Debug\Sem_SO_Project.Properties.Resources.resources
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\obj\Debug\Sem_SO_Project.csproj.GenerateResource.Cache
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\obj\Debug\Sem_SO_Project.exe
+c:\users\pablopulidov\documents\visual studio 2015\Projects\Sem_SO_Project\Sem_SO_Project\obj\Debug\Sem_SO_Project.pdb
