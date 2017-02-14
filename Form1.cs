@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Sem_SO_Project
 {
+
+    
     public partial class Form1 : Form
     {
         int CurrentRow, IDs = 1;
@@ -26,6 +28,13 @@ namespace Sem_SO_Project
         private void start_Click(object sender, EventArgs e)
         {
 
+        /*    List<MyClass> list = new List<MyClass>();
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+              
+            }
+        */
             this.Hide();
 
             Processwindow WinProcess = new Processwindow();
