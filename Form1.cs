@@ -25,7 +25,12 @@ namespace Sem_SO_Project
 
         private void start_Click(object sender, EventArgs e)
         {
-          
+
+            this.Hide();
+
+            Processwindow WinProcess = new Processwindow();
+
+            WinProcess.Show();
 
         }
 
