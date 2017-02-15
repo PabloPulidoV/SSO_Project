@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sem_SO_Project.Class;
+using Sem_SO_Project.Functions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace Sem_SO_Project
 {
 
@@ -16,36 +20,40 @@ namespace Sem_SO_Project
     {
         int CurrentRow, IDs = 1;
         string sCurrentRow;
-
+        public List<Process> list1 = new List<Process>();
+        DataMan dt;
 
         public Form1()
         {
             InitializeComponent();
-            IniRowID();
-        
+            IniRowID(); 
+       
         }
 
         private void start_Click(object sender, EventArgs e)
         {
 
-        /*    List<MyClass> list = new List<MyClass>();
-
+            
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-              
+                Process pr = new Process();
+
+                pr.IDs = (string)row.Cells["ID"].Value;
+                pr.Nombre = (string)row.Cells["NombProg"].Value;
+                pr.TE = (string)row.Cells["TME"].Value;
+
+                list1.Add(pr);
+ 
             }
-        */
-            this.Hide();
+
+            dt.ls = list1;
+
+            this.Hide();        
 
             Processwindow WinProcess = new Processwindow();
 
             WinProcess.Show();
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
         }
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
