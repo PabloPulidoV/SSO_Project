@@ -21,7 +21,7 @@ namespace Sem_SO_Project
         int CurrentRow, IDs = 1;
         string sCurrentRow;
         public List<Process> list1 = new List<Process>();
-        DataMan dt;
+        DataMan dt = new DataMan();
 
         public Form1()
         {
@@ -46,6 +46,8 @@ namespace Sem_SO_Project
  
             }
 
+            //dt.ls.AddRange(list1);
+
             dt.ls = list1;
 
             this.Hide();        
@@ -53,6 +55,8 @@ namespace Sem_SO_Project
             Processwindow WinProcess = new Processwindow();
 
             WinProcess.Show();
+
+            dt.recorrer();
 
         }
 
@@ -66,6 +70,7 @@ namespace Sem_SO_Project
 
         private void IniRowID()
         {
+            
             dataGridView1.Rows[0].Cells["ID"].Value = "1";
         }
 

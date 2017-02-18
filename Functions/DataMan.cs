@@ -7,9 +7,21 @@ using System.Threading.Tasks;
 
 namespace Sem_SO_Project.Functions
 {
-    class DataMan
+    public class DataMan
     {
-        public List<Process> ls;
+
+        public List<Process> ls = new List<Process>();
+        string ld;
+
+
+        public void recorrer() //Se encarga de recorrer la lista. 
+        {
+            foreach(Process pr in ls)
+            {
+                ld = pr.Nombre;
+            }
+        }
 
     }
+
 }
