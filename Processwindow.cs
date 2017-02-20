@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sem_SO_Project.Functions;
+using Sem_SO_Project.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,15 @@ namespace Sem_SO_Project
 {
     public partial class Processwindow : Form
     {
-        public Processwindow()
+        DataMan dt1 = new DataMan();
+        public Processwindow(List<Process> pro)
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dt1.recorrer();
         }
     }
 

@@ -46,17 +46,16 @@ namespace Sem_SO_Project
  
             }
 
-            //dt.ls.AddRange(list1);
-
-            dt.ls = list1;
+            //dt.ls = list1;
 
             this.Hide();        
 
-            Processwindow WinProcess = new Processwindow();
+            Processwindow WinProcess = new Processwindow(list1);
 
             WinProcess.Show();
 
-            dt.recorrer();
+            //dt.recorrer();
+            //dt.Lotescount();
 
         }
 

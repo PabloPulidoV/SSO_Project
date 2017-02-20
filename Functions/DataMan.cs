@@ -12,6 +12,7 @@ namespace Sem_SO_Project.Functions
 
         public List<Process> ls = new List<Process>();
         string ld;
+        int lt,clt;
 
 
         public void recorrer() //Se encarga de recorrer la lista. 
@@ -19,7 +20,13 @@ namespace Sem_SO_Project.Functions
             foreach(Process pr in ls)
             {
                 ld = pr.Nombre;
+                
             }
+        }
+
+        public void Lotescount()
+        {
+            
         }
 
     }
