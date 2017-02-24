@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.start = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombProg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Op = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.start = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,17 +45,29 @@
             this.NombProg,
             this.Op,
             this.TME});
-            this.dataGridView1.Location = new System.Drawing.Point(64, 65);
+            this.dataGridView1.Location = new System.Drawing.Point(24, 26);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(445, 242);
+            this.dataGridView1.Size = new System.Drawing.Size(395, 242);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(316, 288);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(103, 33);
+            this.start.TabIndex = 1;
+            this.start.Text = "START";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
+            // 
             // ID
             // 
+            this.ID.FillWeight = 50F;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
+            this.ID.Width = 50;
             // 
             // NombProg
             // 
@@ -72,21 +84,11 @@
             this.TME.HeaderText = "Tiempo Máximo";
             this.TME.Name = "TME";
             // 
-            // start
-            // 
-            this.start.Location = new System.Drawing.Point(406, 338);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(103, 33);
-            this.start.TabIndex = 1;
-            this.start.Text = "START";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.start_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 394);
+            this.ClientSize = new System.Drawing.Size(445, 333);
             this.Controls.Add(this.start);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
@@ -100,11 +102,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button start;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombProg;
         private System.Windows.Forms.DataGridViewTextBoxColumn Op;
         private System.Windows.Forms.DataGridViewTextBoxColumn TME;
-        private System.Windows.Forms.Button start;
     }
 }
 

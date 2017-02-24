@@ -14,16 +14,22 @@ namespace Sem_SO_Project
 {
     public partial class Processwindow : Form
     {
-        DataMan dt1 = new DataMan();
-        public Processwindow(List<Process> pro)
+        //DataMan dt1 = new DataMan();
+
+        public Processwindow()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void change(string h, List<Process> pp1)
         {
-            dt1.recorrer();
+            this.textBox7.Text = h;
+
+            LoteEjec.DataSource = pp1;
+           
+            
         }
+
     }
 
 }

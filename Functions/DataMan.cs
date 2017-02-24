@@ -9,26 +9,35 @@ namespace Sem_SO_Project.Functions
 {
     public class DataMan
     {
-
+        Processwindow WinProcess = new Processwindow();
         public List<Process> ls = new List<Process>();
         string ld;
-        int lt,clt;
-
-
+        
         public void recorrer() //Se encarga de recorrer la lista. 
         {
             foreach(Process pr in ls)
             {
                 ld = pr.Nombre;
-                
             }
         }
 
-        public void Lotescount()
+        public void IniProcess(List<Process> pro)
         {
-            
+            ls = pro;
+            recorrer();
+            WinProcess.Show();
+            WinProcess.textBox7.Text = "100";
+            WinProcess.textBox1.Text = "600";
+            WinProcess.LoteEjec.DataSource = pro;
+            //WinProcess.change("20", pro);
+            //EjecProcess();
         }
 
-    }
+        public void EjecProcess()
+        {
+            WinProcess.textBox7.Text = "100";
+        }
+
+    }  
 
 }
