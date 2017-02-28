@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.start = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombProg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Op = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.start = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,16 +50,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(395, 242);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-            // 
-            // start
-            // 
-            this.start.Location = new System.Drawing.Point(316, 288);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(103, 33);
-            this.start.TabIndex = 1;
-            this.start.Text = "START";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // ID
             // 
@@ -84,6 +74,16 @@
             this.TME.HeaderText = "Tiempo Máximo";
             this.TME.Name = "TME";
             // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(316, 288);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(103, 33);
+            this.start.TabIndex = 1;
+            this.start.Text = "NEXT";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,7 +93,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SO System";
+            this.Text = " ";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

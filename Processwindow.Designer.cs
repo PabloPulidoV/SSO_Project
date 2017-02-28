@@ -52,6 +52,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LoteEjec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoteFinal)).BeginInit();
             this.panel1.SuspendLayout();
@@ -120,9 +123,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(340, 498);
+            this.progressBar1.Location = new System.Drawing.Point(340, 484);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(349, 23);
+            this.progressBar1.Size = new System.Drawing.Size(253, 37);
             this.progressBar1.TabIndex = 4;
             // 
             // panel1
@@ -270,11 +273,42 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "No° Lotes";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(489, 13);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(140, 20);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Contador Global";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(635, 13);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(54, 20);
+            this.textBox8.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(599, 484);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 37);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "START";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // Processwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 545);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.panel1);
@@ -298,13 +332,13 @@
         #endregion
 
         public System.Windows.Forms.DataGridView LoteEjec;
-        private System.Windows.Forms.DataGridView LoteFinal;
-        private System.Windows.Forms.Label LEjec;
-        private System.Windows.Forms.Label LFinal;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Op;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Res;
+        public System.Windows.Forms.DataGridView LoteFinal;
+        public System.Windows.Forms.Label LEjec;
+        public System.Windows.Forms.Label LFinal;
+        public System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.DataGridViewTextBoxColumn IDt;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Op;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Res;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -321,5 +355,8 @@
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button button1;
     }
 }

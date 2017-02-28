@@ -12,6 +12,7 @@ namespace Sem_SO_Project.Class
         public string IDs { get; set; }
         public string Nombre { get; set; }
         public string TE { get; set; }
+        public string OP { get; set; }
 
     }
 

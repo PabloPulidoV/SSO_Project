@@ -26,10 +26,8 @@ namespace Sem_SO_Project
             this.textBox7.Text = h;
 
             LoteEjec.DataSource = pp1;
-           
-            
-        }
 
+        }
     }
 
 }
