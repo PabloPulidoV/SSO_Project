@@ -15,33 +15,46 @@ namespace Sem_SO_Project.Functions
     public class DataMan
     {
         Processwindow wp = new Processwindow();
-        public List<Process> ls = new List<Process>();
+        //public List<Process> ls = new List<Process>();
+        public List<Process>[] ls = new List<Process>[100];
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
         string ld, id, op, res;
-        int cantProcess, timing, TT = 0, TR = 0, controlP, sh1= 0;
+        int cantProcess, timing, TT = 0, TR = 0, controlP, sh1= 0, numlot, lotIND, reloj = 0;
         public int num;
         public static int h;
         string value;
 
 
 
-        public void recorrer() //Se encarga de recorrer la lista. 
-        {
-            foreach(Process pr in ls)
-            {
-                ld = pr.Nombre;
-            }
-        }
 
-        public void IniProcess(List<Process> pro)
+        //public void IniProcess(List<Process> pro)
+        public void IniProcess(List<Process>[] pro)
         {
             ls = pro;
-            cantProcess = ls.Count;
+            cantProcess = ls[0].Count;
             controlP = cantProcess;
-            wp.LoteEjec.DataSource = pro;
+            wp.LoteEjec.DataSource = pro[0];
+            arrayUse();
+            //wp.textBox7.Text = numlot.ToString();
             wp.Show();
             EjecProcess();
+        }
+
+        public void arrayUse()
+        {
+            for(int i= 0; i <= 100; i++)
+            {
+                if(ls[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    numlot++;
+                    continue;
+                }
+            }
         }
 
         public bool CheckIFNum(string str)
@@ -55,17 +68,18 @@ namespace Sem_SO_Project.Functions
 
         }
 
+ 
         public void SendToFinal(int a)
         {
             id = wp.LoteEjec.Rows[a].Cells["IDs"].Value.ToString();
             op = wp.textBox3.Text = wp.LoteEjec.Rows[a].Cells["OP"].Value.ToString();
             //res = "0";
-            EvaOp(op,id);
+            EvaOp(op,id,true);
             
 
         }
         
-        public bool  EvaOp(string op, string id)
+        public bool  EvaOp(string op, string id, bool active)
         {
             try
             {
@@ -76,16 +90,22 @@ namespace Sem_SO_Project.Functions
                     return false;
                 }
                 else
-                {
-                    wp.LoteFinal.Rows.Add(id, op, value);
+                {   
+                    if (active == true)
+                    {
+                        wp.LoteFinal.Rows.Add(id, op, value);
+                        return true;
+                    }
+
                     return true;
+                  
 
                 }
 
             }
             catch (Exception e)
             {
-                MessageBox.Show("ID: " + id + "\La operación ingresada no es valida.");
+                MessageBox.Show("ID: " + id + "\nLa operación ingresada no es valida.");
                 return false;
             }
          
@@ -100,6 +120,9 @@ namespace Sem_SO_Project.Functions
                 
                 wp.textBox5.Text = TT.ToString();
                 wp.textBox6.Text = TR.ToString();
+                wp.textBox7.Text = numlot.ToString();
+                wp.textBox8.Text = reloj.ToString();
+                reloj++;
                 TT++;
                 TR = h-TT;               
 
@@ -110,10 +133,27 @@ namespace Sem_SO_Project.Functions
 
                 if (controlP == 0)
                 {
-                    SendToFinal(sh1);
-                    t.Stop();
+                    numlot--;
 
-                    MessageBox.Show("El proceso termino");
+                    if(numlot == 0)
+                    {
+                        SendToFinal(sh1);
+                        t.Stop();
+                        wp.textBox7.Text = "0";
+                        MessageBox.Show("El proceso termino");
+                    }
+                    else
+                    {
+                        SendToFinal(sh1);
+                        lotIND++;
+                        sh1 = 0;
+                        TT = 0;
+                        TR = 0;
+                        cantProcess = ls[lotIND].Count;
+                        controlP = cantProcess;
+                        wp.LoteEjec.DataSource = ls[lotIND];
+                    }
+                    
                 }
                 else if (controlP > 0)
                 {
@@ -129,6 +169,8 @@ namespace Sem_SO_Project.Functions
         
         private void setProcess(int a)
         {
+
+
             
             CheckIFNum(wp.LoteEjec.Rows[a].Cells["TE"].Value.ToString());
             timing = num;

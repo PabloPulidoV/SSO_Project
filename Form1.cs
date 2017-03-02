@@ -17,10 +17,12 @@ namespace Sem_SO_Project
 
     public partial class Form1 : Form
     {
-        int CurrentRow, IDs = 1, count = 0, num = 0, ind = 0;
+        int CurrentRow, IDs = 1, count = 0, num = 1, ind = 0, numlot, ListInd = 0;
         bool checkN;
         string sCurrentRow;
-        public List<Process> list1 = new List<Process>();
+        //public List<Process> list1 = new List<Process>();
+        public List<Process>[] list1 = new List<Process>[100];
+        
         DataMan dt = new DataMan();
         
         public Form1()
@@ -31,11 +33,14 @@ namespace Sem_SO_Project
 
         private void start_Click(object sender, EventArgs e)
         {
+            list1[0] = new List<Process>();
             ind = 0;
+            numlot = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 Process pr = new Process();
                 ind++;
+                numlot++;
                 pr.IDs = (string)row.Cells["ID"].Value;
                 pr.Nombre = (string)row.Cells["NombProg"].Value;
                 pr.TE = (string)row.Cells["TME"].Value;
@@ -50,7 +55,7 @@ namespace Sem_SO_Project
                 else
                 {
                     checkN =  dt.CheckIFNum(pr.TE);
-                    if(dt.EvaOp(pr.OP,pr.IDs) == false)
+                    if (dt.EvaOp(pr.OP, pr.IDs, false) == false)
                     {
                         return;
                     }
@@ -62,13 +67,25 @@ namespace Sem_SO_Project
                     }
                     else
                     {
-                        list1.Add(pr);
+                        if(numlot <= 4)
+                        {
+                            list1[ListInd].Add(pr);
+                        }
+                        else if (numlot > 4)
+                        {
+                            ListInd++;
+                            numlot = 1;
+                            list1[ListInd] = new List<Process>();
+                            list1[ListInd].Add(pr);
+                        }
+                        
                     }
+                    
                 }
  
             }
 
-            count = list1.Count();
+            count = list1[0].Count();
 
             if (count < 1)
             {
