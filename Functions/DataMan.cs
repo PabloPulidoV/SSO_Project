@@ -14,19 +14,21 @@ namespace Sem_SO_Project.Functions
 {
     public class DataMan
     {
-        Processwindow wp = new Processwindow();
+        Processwindow wp; //= new Processwindow();
         //public List<Process> ls = new List<Process>();
         public List<Process>[] ls = new List<Process>[100];
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
-        string ld, id, op, res;
-        int cantProcess, timing, TT = 0, TR = 0, controlP, sh1= 0, numlot, lotIND, reloj = 0;
-        public int num;
+        string ld, id, op, name, tmpt;
+        public int cantProcess, timing, TT = 0, TR = 0, controlP, sh1= 0, numlot, lotIND, reloj = 0, kd = 1;
+        public int num, iTTR;
         public static int h;
         string value;
 
-
-
+        public void uno (Processwindow pw)
+        {
+            wp = pw;
+        }
 
         //public void IniProcess(List<Process> pro)
         public void IniProcess(List<Process>[] pro)
@@ -34,11 +36,12 @@ namespace Sem_SO_Project.Functions
             ls = pro;
             cantProcess = ls[0].Count;
             controlP = cantProcess;
-            wp.LoteEjec.DataSource = pro[0];
+            wp.LoteEjec.DataSource = ls[0];
             arrayUse();
-            //wp.textBox7.Text = numlot.ToString();
+            
             wp.Show();
             EjecProcess();
+ 
         }
 
         public void arrayUse()
@@ -68,17 +71,64 @@ namespace Sem_SO_Project.Functions
 
         }
 
- 
+        public bool CheckIFNum2(string str)
+        {
+
+            int n;
+            bool isNum = int.TryParse(str, out n);
+            iTTR = n;
+            return isNum;
+
+        }
+
         public void SendToFinal(int a)
         {
             id = wp.LoteEjec.Rows[a].Cells["IDs"].Value.ToString();
             op = wp.textBox3.Text = wp.LoteEjec.Rows[a].Cells["OP"].Value.ToString();
-            //res = "0";
-            EvaOp(op,id,true);
-            
+            name = wp.LoteEjec.Rows[a].Cells["Nombre"].Value.ToString();
+            tmpt = wp.LoteEjec.Rows[a].Cells["TE"].Value.ToString();
+            EvaOp(op,id,true);                      
 
         }
-        
+
+        public void Interrupt()
+        {
+
+            GetCurrentProcess(sh1);
+
+            Process pr2 = new Process();
+
+            pr2.IDs = id;
+            pr2.Nombre = name;
+            pr2.TE = tmpt;
+            pr2.OP = op;
+            pr2.TT = TT;
+            pr2.TR = TR;
+            pr2.Flag = "1";
+
+            ls[lotIND].Add(pr2);
+            //controlP++;
+
+            ls[lotIND].RemoveAt(sh1);
+            wp.LoteEjec.DataSource = null;
+            wp.LoteEjec.Rows.Clear();
+            wp.LoteEjec.Refresh();
+            wp.LoteEjec.DataSource = ls[lotIND];
+
+            TT = 0;
+            TR = 0;
+        }
+
+        public void GetCurrentProcess(int index)
+        {
+            id = wp.LoteEjec.Rows[index].Cells["IDs"].Value.ToString();
+            op = wp.LoteEjec.Rows[index].Cells["OP"].Value.ToString();
+            name = wp.LoteEjec.Rows[index].Cells["Nombre"].Value.ToString();
+            tmpt = wp.LoteEjec.Rows[index].Cells["TE"].Value.ToString();
+
+
+        }
+
         public bool  EvaOp(string op, string id, bool active)
         {
             try
@@ -97,8 +147,7 @@ namespace Sem_SO_Project.Functions
                         return true;
                     }
 
-                    return true;
-                  
+                    return true;                
 
                 }
 
@@ -110,8 +159,6 @@ namespace Sem_SO_Project.Functions
             }
          
         }
-
-
 
         public void incTT()
         {
@@ -137,14 +184,14 @@ namespace Sem_SO_Project.Functions
 
                     if(numlot == 0)
                     {
-                        SendToFinal(sh1);
+                        SendToFinal(sh1); 
                         t.Stop();
                         wp.textBox7.Text = "0";
                         MessageBox.Show("El proceso termino");
                     }
                     else
                     {
-                        SendToFinal(sh1);
+                        SendToFinal(sh1);                    
                         lotIND++;
                         sh1 = 0;
                         TT = 0;
@@ -169,9 +216,8 @@ namespace Sem_SO_Project.Functions
         
         private void setProcess(int a)
         {
-
-
-            
+            string flg;
+ 
             CheckIFNum(wp.LoteEjec.Rows[a].Cells["TE"].Value.ToString());
             timing = num;
             wp.textBox1.Text = wp.LoteEjec.Rows[a].Cells["IDs"].Value.ToString();
@@ -179,7 +225,16 @@ namespace Sem_SO_Project.Functions
             wp.textBox3.Text = wp.LoteEjec.Rows[a].Cells["OP"].Value.ToString();
             wp.textBox4.Text = wp.LoteEjec.Rows[a].Cells["TE"].Value.ToString();
 
-           
+            flg = wp.LoteEjec.Rows[a].Cells["Flag"].Value.ToString();
+
+            if (flg == "1")
+            {
+                CheckIFNum2(wp.LoteEjec.Rows[a].Cells["TT"].Value.ToString());
+                TT = iTTR;
+                CheckIFNum2(wp.LoteEjec.Rows[a].Cells["TR"].Value.ToString());
+                TR = iTTR;
+                wp.LoteEjec.Rows[a].Cells["Flag"].Value = "0";
+            }
         }
 
         public void timer_Tick(object sender, EventArgs e)

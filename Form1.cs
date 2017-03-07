@@ -22,7 +22,9 @@ namespace Sem_SO_Project
         string sCurrentRow;
         //public List<Process> list1 = new List<Process>();
         public List<Process>[] list1 = new List<Process>[100];
+
         
+
         DataMan dt = new DataMan();
         
         public Form1()
@@ -30,6 +32,8 @@ namespace Sem_SO_Project
             InitializeComponent();
             IniRowID(); 
         }
+
+ 
 
         private void start_Click(object sender, EventArgs e)
         {
@@ -45,6 +49,7 @@ namespace Sem_SO_Project
                 pr.Nombre = (string)row.Cells["NombProg"].Value;
                 pr.TE = (string)row.Cells["TME"].Value;
                 pr.OP = (string)row.Cells["Op"].Value;
+                pr.Flag = "0";
 
                 int cu = dataGridView1.RowCount;
                 if (cu == ind)
@@ -95,7 +100,12 @@ namespace Sem_SO_Project
             else
             {
                 this.Hide();
-                dt.IniProcess(list1);
+                //wp1.Show();
+                Processwindow wp1 = new Processwindow(list1);
+                wp1.Show();
+
+
+                //dt.IniProcess(list1);
             }
         }
 

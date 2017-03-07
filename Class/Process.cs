@@ -13,7 +13,11 @@ namespace Sem_SO_Project.Class
         public string Nombre { get; set; }
         public string TE { get; set; }
         public string OP { get; set; }
+        public string Flag { get; set; }
+        public int TT { get; set; }
+        public int TR { get; set; }
+        
 
-    }
+}
 
 }

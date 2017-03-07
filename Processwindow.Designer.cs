@@ -55,6 +55,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.LoteEjec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoteFinal)).BeginInit();
             this.panel1.SuspendLayout();
@@ -301,11 +302,19 @@
             this.button1.Text = "START";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(402, 41);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(54, 20);
+            this.textBox9.TabIndex = 12;
+            // 
             // Processwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 545);
+            this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox8);
@@ -317,9 +326,11 @@
             this.Controls.Add(this.LEjec);
             this.Controls.Add(this.LoteFinal);
             this.Controls.Add(this.LoteEjec);
+            this.KeyPreview = true;
             this.Name = "Processwindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processwindow";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Processwindow_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.LoteEjec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoteFinal)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -358,5 +369,6 @@
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox textBox9;
     }
 }

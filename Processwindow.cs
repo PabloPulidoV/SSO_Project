@@ -14,20 +14,27 @@ namespace Sem_SO_Project
 {
     public partial class Processwindow : Form
     {
-        //DataMan dt1 = new DataMan();
+        //DataMan dt;
+        DataMan dt = new DataMan();
+        public List<Process>[] ls = new List<Process>[100];
 
-        public Processwindow()
+        public Processwindow(List<Process>[]ll)
         {
             InitializeComponent();
+            dt.uno(this);
+            dt.IniProcess(ll);
         }
 
-        public void change(string h, List<Process> pp1)
+        private void Processwindow_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.textBox7.Text = h;
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                dt.Interrupt();
 
-            LoteEjec.DataSource = pp1;
-
+            }
         }
+
+    
     }
 
 }
