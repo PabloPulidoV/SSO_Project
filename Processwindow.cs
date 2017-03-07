@@ -27,10 +27,24 @@ namespace Sem_SO_Project
 
         private void Processwindow_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.I)
             {
                 dt.Interrupt();
 
+            }
+            else if (e.KeyChar == (char)Keys.E)
+            {
+                dt.SendToFinal(0, true);
+                dt.EliminateProcess(true);
+            }
+            else if (e.KeyChar == (char)Keys.C)
+            {
+                dt.t.Start();
+            }
+            else if (e.KeyChar == (char)Keys.P)
+            {
+               
+                dt.t.Stop();
             }
         }
 

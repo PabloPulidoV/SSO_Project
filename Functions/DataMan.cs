@@ -17,10 +17,10 @@ namespace Sem_SO_Project.Functions
         Processwindow wp; //= new Processwindow();
         //public List<Process> ls = new List<Process>();
         public List<Process>[] ls = new List<Process>[100];
-        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+        public System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
         string ld, id, op, name, tmpt;
-        public int cantProcess, timing, TT = 0, TR = 0, controlP, sh1= 0, numlot, lotIND, reloj = 0, kd = 1;
+        public int cantProcess, timing, TT = 0, TR = 0, controlP, sh1= 0, sh2 = 0, numlot, lotIND, reloj = 0, kd = 1;
         public int num, iTTR;
         public static int h;
         string value;
@@ -30,7 +30,7 @@ namespace Sem_SO_Project.Functions
             wp = pw;
         }
 
-        //public void IniProcess(List<Process> pro)
+        
         public void IniProcess(List<Process>[] pro)
         {
             ls = pro;
@@ -81,13 +81,13 @@ namespace Sem_SO_Project.Functions
 
         }
 
-        public void SendToFinal(int a)
+        public void SendToFinal(int a, bool error)
         {
             id = wp.LoteEjec.Rows[a].Cells["IDs"].Value.ToString();
             op = wp.textBox3.Text = wp.LoteEjec.Rows[a].Cells["OP"].Value.ToString();
             name = wp.LoteEjec.Rows[a].Cells["Nombre"].Value.ToString();
             tmpt = wp.LoteEjec.Rows[a].Cells["TE"].Value.ToString();
-            EvaOp(op,id,true);                      
+            EvaOp(op,id,true,error);                      
 
         }
 
@@ -109,11 +109,7 @@ namespace Sem_SO_Project.Functions
             ls[lotIND].Add(pr2);
             //controlP++;
 
-            ls[lotIND].RemoveAt(sh1);
-            wp.LoteEjec.DataSource = null;
-            wp.LoteEjec.Rows.Clear();
-            wp.LoteEjec.Refresh();
-            wp.LoteEjec.DataSource = ls[lotIND];
+            EliminateProcess(false);
 
             TT = 0;
             TR = 0;
@@ -129,7 +125,23 @@ namespace Sem_SO_Project.Functions
 
         }
 
-        public bool  EvaOp(string op, string id, bool active)
+        public void EliminateProcess(bool Ekey)
+        {
+            if(Ekey == true)
+            {
+                controlP--;
+            }
+            ls[lotIND].RemoveAt(sh1);
+            wp.LoteEjec.DataSource = null;
+            wp.LoteEjec.Rows.Clear();
+            wp.LoteEjec.Refresh();
+            wp.LoteEjec.DataSource = ls[lotIND];
+
+            TT = 0;
+            TR = 0;
+        }
+
+        public bool  EvaOp(string op, string id, bool active, bool error)
         {
             try
             {
@@ -143,8 +155,17 @@ namespace Sem_SO_Project.Functions
                 {   
                     if (active == true)
                     {
-                        wp.LoteFinal.Rows.Add(id, op, value);
-                        return true;
+                        if (error == false)
+                        {
+                            wp.LoteFinal.Rows.Add(id, op, value);
+                            return true;
+                        }
+                        else if (error == true)
+                        {
+                            wp.LoteFinal.Rows.Add(id, op, "ERROR");
+                            return true;
+                        }
+                        
                     }
 
                     return true;                
@@ -184,16 +205,17 @@ namespace Sem_SO_Project.Functions
 
                     if(numlot == 0)
                     {
-                        SendToFinal(sh1); 
+                        SendToFinal(sh1, false); 
                         t.Stop();
                         wp.textBox7.Text = "0";
                         MessageBox.Show("El proceso termino");
                     }
                     else
                     {
-                        SendToFinal(sh1);                    
+                        SendToFinal(sh1, false);
+                        EliminateProcess(false);
                         lotIND++;
-                        sh1 = 0;
+                        //sh1 = 0;
                         TT = 0;
                         TR = 0;
                         cantProcess = ls[lotIND].Count;
@@ -204,8 +226,9 @@ namespace Sem_SO_Project.Functions
                 }
                 else if (controlP > 0)
                 {
-                    SendToFinal(sh1);
-                    sh1++;
+                    SendToFinal(sh1, false);
+                    EliminateProcess(false);
+                    //sh1++;
                     TT = 0;
                     TR = 0;
                 }

@@ -60,7 +60,7 @@ namespace Sem_SO_Project
                 else
                 {
                     checkN =  dt.CheckIFNum(pr.TE);
-                    if (dt.EvaOp(pr.OP, pr.IDs, false) == false)
+                    if (dt.EvaOp(pr.OP, pr.IDs, false, false) == false)
                     {
                         return;
                     }
