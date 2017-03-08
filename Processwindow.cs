@@ -20,9 +20,18 @@ namespace Sem_SO_Project
 
         public Processwindow(List<Process>[]ll)
         {
-            InitializeComponent();
-            dt.uno(this);
-            dt.IniProcess(ll);
+
+            if (ll == null)
+            {
+                MessageBox.Show("La lista esta Vacía");
+            }
+            else
+            {
+                InitializeComponent();
+                dt.uno(this);
+                dt.IniProcess(ll);
+            }
+
         }
 
         private void Processwindow_KeyPress(object sender, KeyPressEventArgs e)

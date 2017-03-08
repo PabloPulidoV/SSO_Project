@@ -17,3 +17,4 @@ C:\Users\PabloPulidoV\Documents\Visual Studio 2015\Projects\Sem_SO_Project\SSO_P
 C:\Users\PabloPulidoV\Documents\Visual Studio 2015\Projects\Sem_SO_Project\SSO_PJT\obj\Debug\Sem_SO_Project.exe
 C:\Users\PabloPulidoV\Documents\Visual Studio 2015\Projects\Sem_SO_Project\SSO_PJT\obj\Debug\Sem_SO_Project.pdb
 C:\Users\PabloPulidoV\Documents\Visual Studio 2015\Projects\Sem_SO_Project\SSO_PJT\obj\Debug\Sem_SO_Project.csprojResolveAssemblyReference.cache
+C:\Users\PabloPulidoV\Documents\Visual Studio 2015\Projects\Sem_SO_Project\SSO_PJT\obj\Debug\Sem_SO_Project.Select_Process.resources

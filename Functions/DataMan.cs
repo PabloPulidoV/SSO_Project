@@ -30,18 +30,30 @@ namespace Sem_SO_Project.Functions
             wp = pw;
         }
 
-        
         public void IniProcess(List<Process>[] pro)
         {
             ls = pro;
             cantProcess = ls[0].Count;
             controlP = cantProcess;
             wp.LoteEjec.DataSource = ls[0];
+            setGridProperties();
+
             arrayUse();
-            
             wp.Show();
             EjecProcess();
  
+        }
+
+        public void setGridProperties()
+        {
+            foreach (DataGridViewBand band in wp.LoteEjec.Columns)
+            {
+                band.ReadOnly = true;
+            }
+
+            wp.LoteEjec.Columns[3].HeaderCell.Value = "Tiempo Estimado";
+            wp.LoteEjec.Columns[4].HeaderCell.Value = "Tiempo Ejecutado";
+            wp.LoteEjec.Columns[5].HeaderCell.Value = "Tiempo Restante";
         }
 
         public void arrayUse()
@@ -136,6 +148,8 @@ namespace Sem_SO_Project.Functions
             wp.LoteEjec.Rows.Clear();
             wp.LoteEjec.Refresh();
             wp.LoteEjec.DataSource = ls[lotIND];
+
+            setGridProperties();
 
             TT = 0;
             TR = 0;
